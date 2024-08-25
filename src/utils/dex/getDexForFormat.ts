@@ -40,21 +40,23 @@ export const getDexForFormat = (format?: string | GenerationNum): Showdown.Modde
     return format > 0 ? Dex.forGen(format) : Dex;
   }
 
+
   const formatAsId = formatId(format);
+  return Dex.forFormat(formatAsId)
 
-  if (formatAsId.includes('letsgo')) {
-    return Dex.mod('gen7letsgo');
-  }
+  // if (formatAsId.includes('letsgo')) {
+  //   return Dex.mod('gen7letsgo');
+  // }
 
-  if (formatAsId.includes('bdsp')) {
-    return Dex.mod('gen8bdsp');
-  }
+  // if (formatAsId.includes('bdsp')) {
+  //   return Dex.mod('gen8bdsp');
+  // }
 
-  const gen = detectGenFromFormat(formatAsId);
+  // const gen = detectGenFromFormat(formatAsId);
 
-  if (typeof gen !== 'number' || gen < 1) {
-    return Dex;
-  }
+  // if (typeof gen !== 'number' || gen < 1) {
+  //   return Dex;
+  // }
 
-  return Dex.forGen(gen);
+  // return Dex.forGen(gen);
 };

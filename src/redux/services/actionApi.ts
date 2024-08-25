@@ -186,6 +186,7 @@ export const actionApi = showdownApi.injectEndpoints({
   endpoints: (build) => ({
     userLadder: build.query<ShowdownActionUserLadderInfo[], string>({
       queryFn: async (username) => {
+        throw new Error('Cant access ladder rank.');
         if (!username) {
           throw new Error('No valid username was provided.');
         }

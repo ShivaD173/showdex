@@ -22,6 +22,14 @@ const FormatOnlyKeywords: string[] = [
   'random', // e.g., 'gen9randomdoublesbattle'
   'bdsp', // e.g., 'gen8bdspou'
   'letsgo', // e.g., 'gen7letsgoou'
+  'vgcgay',
+  'vgcplat',
+  'su',
+  'iu',
+  '8u',
+  '9u',
+  '10u',
+  'lol'
 ];
 
 /**
@@ -142,47 +150,26 @@ export const buildPresetQuery = <
     const {
       gen,
       format,
-      formatOnly,
+      formatOnly: formatOnlyFromArgs,
       maxAge,
     } = args || {};
 
     let output: CalcdexPokemonPreset[] = [];
 
     // if this is false, then we'll fetch ALL presets for the detected gen
-    const filterByFormat = !!format && (
-      source === 'usage'
-        || formatOnly
-        || FormatOnlyKeywords.some((f) => format.includes(f))
-    );
+    const formatOnly = formatOnlyFromArgs || FormatOnlyKeywords.some((f) => format.includes(f));
+    const filterByFormat = !!format && (source === 'usage' || formatOnly);
 
     // attempt to guess the endpoint from the args
     const endpoint = (filterByFormat && formatEndpointFormat(format)) || `gen${gen}`;
     const cacheEnabled = nonEmptyObject(maxAge);
 
     if (cacheEnabled) {
-      // const [presets, stale] = getCachedPresets(
-      //   endpoint,
-      //   source,
-      //   maxAge,
-      // );
-
       const presets = await readPresetsDb(format, {
         formatOnly,
         source,
         maxAge,
       });
-
-      /*
-      if (presets?.length) {
-        output = presets;
-
-        if (!stale) {
-          endTimer('(cache hit)', 'endpoint', endpoint);
-
-          return { data: output };
-        }
-      }
-      */
 
       if (presets.length) {
         endTimer('(cache hit)', 'endpoint', endpoint);
@@ -209,7 +196,10 @@ export const buildPresetQuery = <
       const data = response.json();
 
       // build a transform function from the `transformer` factory
-      const transform = transformer(args);
+      const transform = transformer({
+        ...args,
+        formatOnly,
+      });
 
       if (typeof transform === 'function') {
         output = transform(data, { resHeaders: response.headers } as TMeta, args);
@@ -227,7 +217,6 @@ export const buildPresetQuery = <
 
     // update the cache if enabled
     if (cacheEnabled && output.length) {
-      // cachePresets(output, endpoint, source);
       void writePresetsDb(output);
     }
 

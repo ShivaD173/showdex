@@ -53,6 +53,7 @@ declare namespace Showdown {
 
     mod(modid: string): ModdedDex;
     forGen(gen: number): this;
+    forFormat(format: string): this;
     resolveAvatar(avatar: string): string;
     sanitizeName(name: string): string;
     getShortName(name: string): string;

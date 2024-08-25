@@ -5,6 +5,7 @@ import {
   type Pokemon as SmogonPokemon,
   calculate,
 } from '@smogon/calc';
+import {calculate as gayCalculate} from '@smogon/gaycalc'
 import { type ShowdexCalcdexSettings } from '@showdex/interfaces/app';
 import { type CalcdexBattleField, type CalcdexPlayer, type CalcdexPokemon } from '@showdex/interfaces/calc';
 import { logger } from '@showdex/utils/debug';
@@ -157,14 +158,27 @@ export const calcSmogonMatchup = (
   );
 
   try {
-    const result = calculate(
-      dex,
-      matchup.attacker,
-      matchup.defender,
-      matchup.move,
-      smogonField,
-      { strikes },
-    );
+    let result;
+    if (format.includes("vgcgay")) {
+      result = gayCalculate(
+        dex,
+        matchup.attacker,
+        matchup.defender,
+        matchup.move,
+        smogonField,
+        { strikes },
+      );
+    }
+    else {
+      result = calculate(
+        dex,
+        matchup.attacker,
+        matchup.defender,
+        matchup.move,
+        smogonField,
+        { strikes },
+      );
+    }
 
     matchup.description = parseMatchupDescription(result);
     matchup.damageRange = getMatchupRange(result);

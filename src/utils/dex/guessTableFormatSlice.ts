@@ -61,6 +61,7 @@ const KnownFormatSlices: [
   [/vgc20(?:10|16|19|22)|(?:bss|battlespot|battlestadium).*(?:series(?:10|11)$)/, 'Restricted Legendary'],
   [/(?:bss|battlespot|battlestadium).*series13$/, 'CAP'], // refers to index 0 in `
   [/vgc\d{2,4}|bss|battlespot|battlestadium/, 'Regular'],
+  [/vgcgay/, 'Regular'],
   [/bdsp|letsgo|stadium/, 'Uber'],
   [/mono(?:type|threat)/, 'Uber'],
   [/doublesubers/, 'DUber'],
@@ -73,6 +74,10 @@ const KnownFormatSlices: [
   [/nu/, 'NU', 'RU', 'UU'],
   [/pu/, 'PU', 'NU'],
   [/zu/, 'ZU', 'PU', 'NU'],
+  [/su/, 'SU'],
+  [/iu/, 'IU'],
+  [/8u/, '8U'],
+  [/9u/, '9U'],
   [/(?<!cap)lc/, 'LC'],
   [/caplc/, 'CAP LC'], // special case, handled separately if detected
   [/cap/, 'CAP'], // also special case ('CAP' isn't an actual BattleTeambuilderTableFormat key)

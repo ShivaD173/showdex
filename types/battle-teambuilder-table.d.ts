@@ -29,7 +29,13 @@ declare namespace Showdown {
     | 'RU'
     | 'UU'
     | 'Uber'
-    | 'ZU';
+    | 'ZU'
+    | 'SU'
+    | 'IU'
+    | '8U'
+    | '9U'
+    | '10U'
+    | '11U';
 
   type BattleTeambuilderTableTier =
     | [type: 'header', name: string]
