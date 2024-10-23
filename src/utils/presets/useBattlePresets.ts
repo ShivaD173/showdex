@@ -192,7 +192,7 @@ export const useBattlePresets = (
 
   const gen = detectGenFromFormat(format);
   const genlessFormat = getGenlessFormat(format);
-  const randoms = genlessFormat?.includes('random');
+  const randoms = genlessFormat?.includes('random') && !genlessFormat?.includes('vgcpride');
 
   const teambuilderPresets = React.useMemo(() => (
     includeTeambuilder !== 'never'

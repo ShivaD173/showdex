@@ -22,8 +22,7 @@ const FormatOnlyKeywords: string[] = [
   'random', // e.g., 'gen9randomdoublesbattle'
   'bdsp', // e.g., 'gen8bdspou'
   'letsgo', // e.g., 'gen7letsgoou'
-  'vgcgay',
-  'vgcplat',
+  'vgcpride',
   'su',
   'iu',
   '8u',
@@ -85,6 +84,10 @@ const FormatReplacements: [test: RegExp, replace: RegExp, replacement: string][]
   // Randomized Format Spotlight as of 2024/01/10
   // e.g., 'gen6firstbloodrandombattle' -> 'gen6randombattle'
   [/firstblood/i, null, ''],
+
+  // Make VGC Gay Rand bats just do regular vgc gay
+  // e.g., 'gen6firstbloodrandombattle' -> 'gen6randombattle'
+  [/vgcpriderandombattle/i, null, 'vgcpride'],
 ];
 
 // 10/10 function name

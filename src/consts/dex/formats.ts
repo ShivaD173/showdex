@@ -224,6 +224,10 @@ export const FormatLabels: Record<string, string> = {
   vgc2024: 'VGC 2024',
   voltturnmayhem: 'Volt Turn Mayhem',
   zu: 'ZU', // ZeroUsed
+  vgcpride: 'VGC Pride',
+  vgcpriderestricted: 'VGC Pride Restricted',
+  su: 'SU',
+  iu: 'IU',
 };
 
 /**

@@ -6,7 +6,7 @@ import {
   type ShowdexCalcMods,
   calculate,
 } from '@smogon/calc';
-import {calculate as gayCalculate} from '@smogon/gaycalc'
+import {calculate as gayCalculate} from '@smogon/calc2'
 import { type ShowdexCalcdexSettings } from '@showdex/interfaces/app';
 import { type CalcdexBattleField, type CalcdexPlayer, type CalcdexPokemon } from '@showdex/interfaces/calc';
 import { logger } from '@showdex/utils/debug';
@@ -163,7 +163,7 @@ export const calcSmogonMatchup = (
 
   try {
     let result;
-    if (format.includes("vgcgay")) {
+    if (format.includes("vgcpride")) {
       result = gayCalculate(
         dex,
         matchup.attacker,

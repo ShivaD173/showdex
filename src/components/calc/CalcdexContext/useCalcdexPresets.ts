@@ -116,7 +116,7 @@ export const useCalcdexPresets = (
       return void endTimer('(not ready)');
     }
 
-    const randoms = state.format.includes('random');
+    const randoms = state.format.includes('random') && !state.format.includes('vgcpride');
     const playersPayload: Partial<Record<CalcdexPlayerKey, Partial<CalcdexPlayer>>> = {};
     const field: Partial<CalcdexBattleField> = {};
 

@@ -61,7 +61,8 @@ const KnownFormatSlices: [
   [/vgc20(?:10|16|19|22)|(?:bss|battlespot|battlestadium).*(?:series(?:10|11)$)/, 'Restricted Legendary'],
   [/(?:bss|battlespot|battlestadium).*series13$/, 'CAP'], // refers to index 0 in `
   [/vgc\d{2,4}|bss|battlespot|battlestadium/, 'Regular'],
-  [/vgcgay/, 'Regular'],
+  [/vgcpride/, 'OU'],
+  [/vgcpriderestricted/, 'Uber'],
   [/bdsp|letsgo|stadium/, 'Uber'],
   [/mono(?:type|threat)/, 'Uber'],
   [/doublesubers/, 'DUber'],
